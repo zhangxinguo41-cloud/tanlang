@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>贪狼游戏合集</title>
+    <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #b8d4e3; font-family: system-ui, -apple-system, 'Segoe UI', Roboto; padding: 2rem 1rem; }
+.container { max-width: 650px; margin: 0 auto; }
+.card { background: white; border-radius: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.05), 0 5px 12px rgba(0,0,0,0.05); padding: 2rem 1.5rem; }
+.logo { text-align: center; margin-bottom: 1.5rem; }
+.logo h1 { font-size: 1.9rem; font-weight: 700; background: linear-gradient(135deg, #f5af19, #f12711); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.logo p { color: #6c757d; font-size: 0.85rem; margin-top: 0.3rem; border-left: 3px solid #f97316; padding-left: 0.8rem; display: inline-block; }
+.person-card { background: #fefaf5; border-radius: 24px; padding: 1.2rem; margin-bottom: 1.5rem; border: 1px solid #ffe6d5; text-align: center; }
+.person-card:hover { border-color: #fbc99d; }
+.person-name { font-size: 1.2rem; font-weight: 700; display: inline-block; background: #2c3e50; color: white; padding: 0.2rem 1rem; border-radius: 40px; margin-bottom: 1rem; }
+.btn-group { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 1rem 0 0.5rem; }
+.btn { flex: 1; min-width: 140px; background: white; border: 1px solid #e2edf2; border-radius: 60px; padding: 0.7rem 1.2rem; text-decoration: none; color: #1a2c3e; display: inline-flex; justify-content: center; align-items: center; gap: 8px; font-weight: 500; transition: 0.2s; }
+.btn:hover { background: #fff6ed; border-color: #fbc99d; transform: translateY(-2px); }
+.extract { font-size: 0.7rem; color: #6c7f8f; background: #f0f2f5; display: inline-block; padding: 4px 12px; border-radius: 20px; margin-top: 8px; text-align: center; }
+.pwd-block { background: #f9f2e0; border-left: 3px solid #f97316; padding: 0.5rem; margin-top: 10px; border-radius: 12px; font-size: 0.75rem; color: #5a3e1b; text-align: center; }
+        .section-title { font-size: 1.2rem; font-weight: 700; margin: 1.8rem 0 1rem 0; color: #1f2d3d; display: flex; align-items: center; gap: 8px; justify-content: center; }
+        .social-card { background: #fefaf5; border-radius: 1.2rem; padding: 1rem; margin-bottom: 1rem; border: 1px solid #ffe6d5; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+        .social-info { display: flex; align-items: center; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .social-icon { font-size: 1.6rem; }
+        .social-name { font-weight: 700; color: #1f2d3d; }
+        .ban-tip { background: #fff1f0; padding: 2px 8px; border-radius: 40px; color: #c2410c; font-size: 0.7rem; display: inline-block; }
+        .qq-number { background: #e9ecef; padding: 4px 10px; border-radius: 30px; font-size: 0.75rem; color: #0a58ca; font-family: monospace; margin-left: 6px; }
+        .btn-link { background: #eef2ff; border-radius: 40px; padding: 6px 16px; text-decoration: none; color: #1e3a8a; font-size: 0.8rem; transition: 0.2s; display: inline-block; }
+        .btn-link:hover { background: #d9e4ff; }
+        .guide { background: #eef2fa; border-radius: 1.2rem; padding: 1rem; margin: 1.5rem 0; text-align: left; font-size: 0.8rem; color: #1f2d3d; }
+        .guide h4 { text-align: center; margin-bottom: 0.5rem; }
+        .guide hr { margin: 0.8rem 0; border: none; border-top: 1px solid #cddae9; }
+        .guide code { background: #fff; padding: 2px 6px; border-radius: 8px; font-family: monospace; }
+        .reward { text-align: center; margin-top: 1.8rem; padding-top: 1rem; border-top: 1px solid #e9edf2; }
+        .footer { text-align: center; font-size: 0.7rem; color: #8a9bb0; margin-top: 1.5rem; }
+        @media (max-width: 500px) { .card { padding: 1.2rem; } .btn-group { flex-direction: column; } }
+        .qr-float { position: fixed; top: 12px; right: 12px; background: rgba(0,0,0,0.75); border-radius: 12px; padding: 6px 8px; text-align: center; z-index: 9999; backdrop-filter: blur(4px); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .qr-float .qr-label { font-size: 10px; color: #ddd; margin-bottom: 4px; }
+        .qr-float img { width: 70px; height: 70px; border-radius: 6px; display: block; }
+        .qr-float .qr-footer { font-size: 9px; color: #aaa; margin-top: 2px; }
+        @media (max-width: 500px) { .qr-float { top: auto; bottom: 12px; right: 12px; } }
+    </style>
+</head>
+<body>
+<div class="qr-float">
+    <div class="qr-label"> 手机扫码</div>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=70x70&data=https://moonlit-cupcake-d1a2de.netlify.app/" alt="二维码">
+    <div class="qr-footer">贪狼合集</div>
+</div>
+<div class="container">
+    <div class="card">
+        <div class="logo">
+            <h1> 贪狼合集</h1>
+            <p>精品游戏资源 · 专注汉化去码</p>
+        </div>
+
+        <!-- 贪狼资源 -->
+        <div class="person-card">
+            <div class="person-name"> 贪狼资源</div>
+            <div class="btn-group">
+                <a href="https://pan.baidu.com/s/1pII4j0EkGNZf2uSg1MCpAQ?pwd=5985" class="btn" target="_blank"> 百度网盘</a>
+                <a href="https://pan.xunlei.com/s/VOr9K22cmbshFxBtmAvrd5IgA1?pwd=shv8#" class="btn" target="_blank"> 迅雷云盘</a>
+                <a href="https://drive.uc.cn/s/c232cbff685c4?public=1" class="btn" target="_blank"> UC云盘</a>
+            </div>
+            <div class="extract">百度提取码：5985 &nbsp; 迅雷提取码：shv8</div>
+            <div class="pwd-block"><strong> 解压码</strong><br>sp-fdc2dfc1zxg</div>
+        </div>
+
+        <!-- 其他大佬资源 -->
+        <div class="person-card">
+            <div class="person-name"> 其他大佬资源</div>
+            <div class="btn-group">
+                <a href="https://pan.baidu.com/s/1qZCFCkA5RVL0iLCAjW_YQg?pwd=tgcu" class="btn" target="_blank"> 百度网盘</a>
+                <a href="https://pan.xunlei.com/s/VOqJs6E3BR6WjoMlixcDkZP-A1?pwd=kpfz#" class="btn" target="_blank"> 迅雷云盘</a>
+                <a href="https://drive.uc.cn/s/d27568500ed54?public=1" class="btn" target="_blank"> UC云盘</a>
+            </div>
+            <div class="extract">百度提取码：tgcu &nbsp; 迅雷提取码：kpfz</div>
+            <div class="pwd-block"><strong> 解压码</strong><br>↓主密码↓<br>ytdhblkfcdhxla<br>↓副密码↓<br>zsmldzgswszddf<br>↓磁力密码↓<br>fapforfun</div>
+        </div>
+<!-- 社群区域 -->
+<div class="section-title"> 加入社群 | 关注账号</div>
+<div style="background: #e8f4fd; border-radius: 16px; padding: 8px 12px; margin-bottom: 1rem; text-align: center; font-size: 0.8rem; color: #0066cc;">
+     提示：加入社群可第一时间获取最新资源与更新通知
+</div>
+
+<!-- Telegram -->
+<div class="social-card">
+    <div class="social-info">
+        <span class="social-icon"></span>
+        <span class="social-name">纸飞机 Telegram【中转群】</span>
+        <span style="font-size:0.7rem; color:#ffaa00;">（需VPN）</span>
+    </div>
+    <a href="https://t.me/+KKo21GtyTSozYzM1" class="btn-link" target="_blank">点击加入 →</a>
+</div>
+
+<!-- QQ社区频道 -->
+<div class="social-card">
+    <div class="social-info">
+        <span class="social-icon"></span>
+        <span class="social-name">QQ社区频道</span>
+    </div>
+    <a href="https://pd.qq.com/s/a1vjiq7qn" class="btn-link" target="_blank">进入频道 →</a>
+</div>
+
+<!-- QQ群 + 显式QQ号 -->
+<div class="social-card">
+    <div class="social-info">
+        <span class="social-icon"></span>
+        <span class="social-name">QQ群 · 贪狼游戏交流群1</span>
+        <span class="qq-number">QQ号：1012663962</span>
+    </div>
+    <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=LuTtc5vEKogaX4eUbycnngLyJ8Z7KvY%2BUBqIYulVtk7mti%2BKCkliHbu22C2X6NeA&busi_data=eyJncm91cENvZGUiOiIxMDEyNjYzOTYyIiwidG9rZW4iOiJ0VzZsNnhySEl4aUxMOC9ERVdEcytHTHdyUkM0SmJybkZ0cEtTRUZiZnFyQzB6d3lNR1FKQXhiUlBrdjRvSThwIiwidWluIjoiMzQ2NTQ4ODQzOCJ9&data=DIQlWBdp1eIuiun0hzTJiB7d-qzJx5_KLMz8pJUod_SCd3tuXAAp73-kUdYChpF7t0wxa58V-HewvyAK_DhlRw&svctype=4&tempid=h5_group_info" class="btn-link" target="_blank">加群 →</a>
+</div>
+
+<!-- B站账号 -->
+<div class="social-card">
+    <div class="social-info">
+        <span class="social-icon"></span>
+        <span class="social-name">关注哔哩哔哩账号</span>
+        <span class="ban-tip"> 暂时封禁中</span>
+    </div>
+    <a href="https://space.bilibili.com/24511879" class="btn-link" target="_blank">访问空间 →</a>
+</div>
+<div style="font-size:0.75rem; color:#b45309; background:#fff0e7; padding:6px 10px; border-radius:30px; margin-top:-0.5rem; margin-bottom:1rem; text-align:center;">
+    PS：账号暂时封禁，预计<strong>2027年5月</strong>解封
+</div>
+
+<!-- 解压方式说明 -->
+<div class="guide">
+    <h4> 解压方式</h4>
+    <p>↓ 不会解压缩看这个 ↓<br>
+    电脑请安装 <strong>Bandizip</strong> 解压软件，百度下载免费版。<br>
+    安卓请安装 <strong>ZArchiver</strong> 解压软件，百度下载免费版。</p>
+    <hr>
+    <p><strong>【问题一】分卷压缩包没有下载完全</strong><br>
+    001+002+003... 有多少个压缩包就下载多少个。<br>
+    下载的资源命名如 <code>[6-001.mp4+6-002.mp4...]</code> → 需改名为 <code>[6.7z.001+6.7z.002+...]</code></p>
+    <p><strong>【问题二】解压失败、提示损坏</strong><br>
+    正确命名：<code>6.7z.001</code>、<code>6.7z.002</code> ……<br>
+    错误命名：<code>6(2).7z.002</code> → 必须统一去掉括号和多余字符。</p>
+    <p><strong>【问题三】密码错误</strong><br>
+     <strong>复制正确密码，不要手打！不要手打！不要手打！</strong></p>
+</div>
+        <!-- 微信赞赏码 -->
+        <div class="reward">
+            <div style="background: #fef9e6; border-radius: 20px; padding: 1rem; border: 1px solid #ffe0a3;">
+                <p style="font-size: 0.95rem; font-weight: bold; color: #d4380d;"> 支持作者 | 微信支付</p>
+                <p style="font-size: 0.8rem; color: #5a3e1b;">您的支持是我持续更新的最大动力！</p>
+                <p style="font-size: 0.8rem;">推荐使用微信支付 <span style="color: #f39c12;">king(*^ω^*)</span></p>
+                <div style="margin: 15px auto; width: 180px;">
+                    <img src="photo.png" alt="微信赞赏码" style="width: 100%; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); cursor: pointer;" onclick="alert('请使用微信扫一扫赞赏作者~')">
+                </div>
+                <p style="font-size: 0.75rem; color: #888;"> 点击图片，扫描二维码支持作者</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            所有链接为第三方分享 · 本页仅作导航中转<br>
+            资源不定期更新，请以群内公告为准
+        </div>
+    </div>
+</div>
+</body>
+</html>
