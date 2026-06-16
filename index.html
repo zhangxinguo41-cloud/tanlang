@@ -60,49 +60,45 @@
 <!-- 贪狼资源 -->
 <div class="person-card">
     <div class="person-name"> 贪狼资源</div>
-    <div class="qr-group">
-        <div class="qr-item">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://pan.baidu.com/s/1RKw_9_1GnBmOF6kjoXxzkg?pwd=kbz9" alt="百度网盘二维码">
+    <div class="qr-group" id="tanlang-group">
+        <div class="qr-item" data-url="https://pan.baidu.com/s/1RKw_9_1GnBmOF6kjoXxzkg?pwd=kbz9">
             <div class="qr-label">百度网盘</div>
-            <div class="qr-tip">扫码提取</div>
+            <div class="qr-tip"> 手机直接跳转 |  电脑显示二维码</div>
         </div>
-        <div class="qr-item">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://pan.xunlei.com/s/VOr9K22cmbshFxBtmAvrd5IgA1?pwd=shv8#" alt="迅雷云盘二维码">
+        <div class="qr-item" data-url="https://pan.xunlei.com/s/VOr9K22cmbshFxBtmAvrd5IgA1?pwd=shv8#">
             <div class="qr-label">迅雷云盘</div>
-            <div class="qr-tip">扫码提取</div>
+            <div class="qr-tip"> 手机直接跳转 |  电脑显示二维码</div>
         </div>
-        <div class="qr-item">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://drive.uc.cn/s/c232cbff685c4?public=1" alt="UC云盘二维码">
+        <div class="qr-item" data-url="https://drive.uc.cn/s/c232cbff685c4?public=1">
             <div class="qr-label">UC云盘</div>
-            <div class="qr-tip">扫码提取</div>
+            <div class="qr-tip"> 手机直接跳转 |  电脑显示二维码</div>
         </div>
     </div>
     <div class="extract">百度提取码：kbz9 &nbsp; 迅雷提取码：shv8</div>
     <div class="pwd-block"><strong> 解压码</strong><br>sp-fdc2dfc1zxg</div>
 </div>
+
 <!-- 其他大佬资源 -->
 <div class="person-card">
     <div class="person-name"> 其他大佬资源</div>
-    <div class="qr-group">
-        <div class="qr-item">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://pan.baidu.com/s/1jHYY77newdYYNuWhxOTmpg?pwd=anem" alt="百度网盘二维码">
+    <div class="qr-group" id="dalao-group">
+        <div class="qr-item" data-url="https://pan.baidu.com/s/1jHYY77newdYYNuWhxOTmpg?pwd=anem">
             <div class="qr-label">百度网盘</div>
-            <div class="qr-tip">扫码提取</div>
+            <div class="qr-tip"> 手机直接跳转 |  电脑显示二维码</div>
         </div>
-        <div class="qr-item">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://pan.xunlei.com/s/VOtvvU82406oAVM43Kx9cbKDA1?pwd=d8pr##" alt="迅雷云盘二维码">
+        <div class="qr-item" data-url="https://pan.xunlei.com/s/VOqJs6E3BR6WjoMlixcDkZP-A1?pwd=kpfz#">
             <div class="qr-label">迅雷云盘</div>
-            <div class="qr-tip">扫码提取</div>
+            <div class="qr-tip"> 手机直接跳转 |  电脑显示二维码</div>
         </div>
-        <div class="qr-item">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://drive.uc.cn/s/d27568500ed54?public=1" alt="UC云盘二维码">
+        <div class="qr-item" data-url="https://drive.uc.cn/s/d27568500ed54?public=1">
             <div class="qr-label">UC云盘</div>
-            <div class="qr-tip">扫码提取</div>
+            <div class="qr-tip"> 手机直接跳转 |  电脑显示二维码</div>
         </div>
     </div>
-    <div class="extract">百度提取码：anem &nbsp; 迅雷提取码：d8pr</div>
+    <div class="extract">百度提取码：anem &nbsp; 迅雷提取码：kpfz</div>
     <div class="pwd-block"><strong> 解压码</strong><br>↓主密码↓<br>ytdhblkfcdhxla<br>↓副密码↓<br>zsmldzgswszddf<br>↓磁力密码↓<br>fapforfun</div>
 </div>
+
 <!-- 社群区域 -->
 <div class="section-title"> 加入社群 | 关注账号</div>
 <div style="background: #e8f4fd; border-radius: 16px; padding: 8px 12px; margin-bottom: 1rem; text-align: center; font-size: 0.8rem; color: #0066cc;">
@@ -186,5 +182,93 @@
         </div>
     </div>
 </div>
+    <style>
+    /* 二维码弹窗样式 */
+    .qrcode-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        cursor: pointer;
+    }
+    .qrcode-modal .qrcode-box {
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        text-align: center;
+        max-width: 90%;
+    }
+    .qrcode-modal img {
+        width: 250px;
+        height: 250px;
+        display: block;
+        margin: 0 auto;
+    }
+    .qrcode-modal p {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #333;
+    }
+    .qr-item {
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .qr-item:hover {
+        transform: translateY(-2px);
+    }
+</style>
+
+<script>
+    (function() {
+        // 判断是否为手机设备
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 显示二维码弹窗（电脑端）
+        function showQRCode(url, name) {
+            // 创建遮罩层
+            const modal = document.createElement('div');
+            modal.className = 'qrcode-modal';
+            modal.innerHTML = `
+                <div class="qrcode-box" onclick="event.stopPropagation();">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(url)}" alt="二维码">
+                    <p>${name} 下载链接二维码</p>
+                    <p style="font-size:12px; color:#888;">请使用手机扫码访问</p>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            // 点击任意位置关闭弹窗
+            modal.addEventListener('click', function() {
+                modal.remove();
+            });
+        }
+
+        // 为所有 .qr-item 绑定点击事件
+        const items = document.querySelectorAll('.qr-item');
+        items.forEach(item => {
+            const url = item.getAttribute('data-url');
+            const name = item.querySelector('.qr-label')?.innerText || '网盘';
+            if (!url) return;
+
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (isMobile()) {
+                    // 手机直接跳转
+                    window.location.href = url;
+                } else {
+                    // 电脑显示二维码
+                    showQRCode(url, name);
+                }
+            });
+        });
+    })();
+</script>
 </body>
 </html>
